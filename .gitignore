@@ -1,0 +1,6 @@
+backups/*
+auto-save-list
+.svn
+.DS_Store
+\#*
+thumbs/
