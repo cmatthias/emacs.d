@@ -41,8 +41,8 @@
 (color-theme-blackboard)
 
 ;; resize the window based on screen size
-;; colin's improved variety - WIP
-(defun set-frame-size-according-to-resolution-colin ()
+;; colin's improved variety
+(defun set-frame-size-according-to-resolution ()
   (interactive)
   (if window-system
   (progn
@@ -56,19 +56,7 @@
     (add-to-list 'default-frame-alist
 		 (cons 'height (/ (- (x-display-pixel-height) 50) (frame-char-height)))))))
 
-;; resize the window based on screen size - pulled from emacs-starter kit
-(defun set-frame-size-according-to-resolution ()
-  (interactive)
-  (if window-system
-  (progn
-
-    (if (> (x-display-pixel-width) 1280)
-        (add-to-list 'default-frame-alist (cons 'width 120))
-      (add-to-list 'default-frame-alist (cons 'width 80)))
-    (add-to-list 'default-frame-alist 
-                 (cons 'height (/ (- (x-display-pixel-height) 200) (frame-char-height)))))))
-
-(set-frame-size-according-to-resolution-colin)
+(set-frame-size-according-to-resolution)
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
