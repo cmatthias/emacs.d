@@ -1,3 +1,4 @@
+
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -68,6 +69,13 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+;; java: don't do crazy indent stuff
+(defun my-java-mode-hook ()
+  (c-set-offset 'substatement-open 0)
+  (setq-default indent-tabs-mode nil)
+  (setq-default c-basic-offset 4))
+(add-hook 'java-mode-hook 'my-java-mode-hook)
+
 ;; Prevent emacs splash screen from showing up
 (setq inhibit-splash-screen t)
 
@@ -95,3 +103,13 @@
 ;; Don't clutter up directories with files~
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat dotfiles-dir "backups")))))
+
+
+;; rake tasks are ruby code, too
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
