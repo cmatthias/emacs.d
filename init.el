@@ -17,3 +17,4 @@
              (assoc pkg package-archive-contents))
     (package-install pkg)))
 
+(textmate-mode)
