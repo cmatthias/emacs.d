@@ -3,6 +3,7 @@
         better-defaults
         go-mode
         textmate
+        haml-mode
        ))
 
 (package-initialize)
