@@ -4,6 +4,7 @@
         go-mode
         textmate
         haml-mode
+        yaml-mode
        ))
 
 (package-initialize)
@@ -19,3 +20,16 @@
     (package-install pkg)))
 
 (textmate-mode)
+
+(setq make-backup-files nil)
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+(defun iwb ()
+  "indent whole buffer"
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max)))
+
